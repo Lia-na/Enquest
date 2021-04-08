@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>enquest</title>
+  <meta charset="utf-8">  
+  <meta name="author" content="Liana"/>  
+<meta name="Pasteleria Rey" content="Pasteleria, donde puedes comprar dulces sabrosos y de bajo precio"/>
+<meta name="keywords" content="el mundo de los dulces"/>  
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+ <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+ <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&language=es&key=AIzaSyBqOnP-FCw6XYKFKDotTGlFujogNdDlNsc"></script>
+<script>
+function ponerImagen() {
+	     var imagenADibujar=document.getElementById("imagen");
+	     var reader = new FileReader();
+		 reader.onload = function (e) {					  
+		 document.getElementById("imagen1").setAttribute("src" , e.target.result);
+	     }
+	     reader.readAsDataURL(imagenADibujar.files[0]);
+	}
+
+function enviar(){
+	if(document.formulario.checkValidity() == true){
+		document.querySelector("#boton").style.display = "none";
+		document.querySelector("#resultado").innerHTML = "<center><img class='espere' src='img/cargando.gif'></center>";
+		document.querySelector("#resultado").setAttribute("class","resultado");
+		var request = new XMLHttpRequest();
+
+		request.open("POST", "http://10.10.2.1/recibir2.php", true);
+		//true es que hay datos adjuntos
+
+		request.onreadystatechange = function(){
+
+			if(request.readyState == XMLHttpRequest.DONE){
+				
+				if(request.status == 200){
+					document.querySelector("#resultado").innerHTML = "";
+					alert("Su solicitud ha sido procesada con éxito.");
+					document.querySelector("#boton").style.display = "block";
+					document.formulario.reset();
+					document.querySelector("#resultado").setAttribute("class","");
+					
+					
+				}else{
+					alert("Se ha producido un error, por favor inténtelo de nuevo.")
+					document.querySelector("#resultado").innerHTML = "";
+					document.querySelector("#boton").style.display = "block";
+					document.querySelector("#resultado").setAttribute("class","");
+				}
+			}
+		}
+	}else{
+		alert("Revise los datos, por favor.")
+	}
+	var formData = new FormData(document.formulario);
+	request.send(formData);
+	
+}
+</script>
+
+ <style> 
+ 
+/* CSS Document */
+body{
+	background-image:url(imagen/fondo1.jpg);
+	background-repeat:repeat-x;
+	background-size:auto 100%;
+	background-color:#a1c1df;		
+	width:100%;
+	height:1200px;
+	font-family:Verdana, Geneva, sans-serif;	
+	margin:0 auto;		
+	box-sizing:border-box;
+}	
+#contenido1{
+	width:100%;
+	
+}
+ 
+
+  /* Menú */
+ nav{
+		background-color:#6699cc;
+		width:100%;		
+		font-size:1.2em;					
+		height:40px;
+		margin-top:10px;			
+		box-sizing:border-box;		
+		
+	}
+	nav a{
+		display:block;
+		color:#fff;
+		width:10%;;
+		margin-left:7%;
+		box-sizing:border-box;
+		text-decoration:none;
+		float:left;
+		text-align:center;
+		padding-top:12px;
+		
+		
+	}
+	nav a:hover{
+		display:block;
+		color:#ffee00;
+		transition:2s;
+	}
+  .icono {
+	margin-left:600px;
+	/* [disabled]box-sizing:border-box; */	
+  }
+	
+	
+	footer{
+		height:80px;
+		background-color:#fff;
+	}
+	.icon1{
+		width:100%;
+		padding-left:60%;
+	}
+	.logo{
+		width:225px;
+		padding-top:2px;				
+		box-sizing:border-box;
+	}
+	p,li{
+		font-size:0.8em;
+	}
+	
+	
+	.caja{
+	width:90%;			
+	box-sizing:border-box;
+}
+
+#caja{
+	width:40%;
+	height:100px;	
+	color:#333;
+	margin-left:115px;			
+	box-sizing:border-box;
+}
+#map1{
+	width:80%;
+	float:left;
+}
+form{
+	width:80%;
+	float:left;
+}
+#boton{
+	width:30%;
+	height:30px;
+	margin-top:0px;
+	position:relative;
+	float-left:5%;
+	}
+	.boton{
+		width:100%;
+		}
+
+	 </style>
+ 
+</head>
+<body onload="iniciar()">
+<div class="container-fluid">
+
+	<div class="row menu">
+		<div class=" col-sm-6 ">                   
+	  <!-- arachin gicy -->	  
+		<div style="float:left;"><img src="imagen/logo.png" /></div>    
+    	
+        </div>      
+       	<div class=" col-sm-6">
+	  	</div>
+        <div style="clear:both"></div> 
+      </div>	
+ </div> 
+<nav class="navbar navbar-expand-md sticky-top" style="background-color:#6699cc;">	 
+	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+		<i class="fas fa-caret-square-down " style="color:#256FA0;"></i>
+	  </button>
+	  <!-- Navbar links -->
+	  <div class="collapse navbar-collapse" id="collapsibleNavbar" >
+		<ul class="navbar-nav">
+		  <li class="nav-item">
+			<a class="nav-link" href="#empresa">Empresa</a>
+		  </li>
+		  <li class="nav-item">
+			<a class="nav-link" href="servicios.html">Servicios</a>
+		  </li>
+		  <li class="nav-item" >
+			<a class="nav-link" href="filosofiaexperiencia.html#filosofia">Filosofia</a>
+		  </li> 	  
+		  <li class="nav-item" >
+			<a class="nav-link" href="filosofiaexperiencia.html#experiencia">Experiencia</a>
+		  </li> 
+          <li class="nav-item" >
+			<a class="nav-link" href="#contacto">Contaco</a>
+		  </li> 		  
+		</ul>
+		
+	  </div> 
+       <div style="float:right;" class="d-none d-sm-block">
+		<div class="icono"><i class="fab fa-facebook "></i></div>
+		
+	  </div>
+      </nav>
+<div class="container-fluid">
+	<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="5000" data-pause="false" >
+	  <!-- Indicators -->
+	  <ul class="carousel-indicators">
+		<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+		<li data-target="#myCarousel" data-slide-to="1"></li>
+		<li data-target="#myCarousel" data-slide-to="2"></li>
+        <li data-target="#myCarousel" data-slide-to="3"></li>
+	  </ul>
+	  
+	  <!-- The slideshow -->
+	  <div class="carousel-inner">
+		<div class="carousel-item active">
+			<div id="contenido1">
+            <img src="imagen/baner1.jpg">				
+			</div>
+		</div>
+		<div class="carousel-item">
+			<div id="contenido2">
+				<img src="imagen/baner2.jpg"/>	
+			</div>
+		</div>
+		<div class="carousel-item">
+			<div id="contenido3">
+				<img src="imagen/baner3.jpg"/>	
+			</div>
+		</div>	  
+	  <div class="carousel-item">
+			<div id="contenido4">
+				<img src="imagen/baner4.jpg"/>	
+			</div>
+		</div>
+	  </div>
+	  <!-- Left and right controls -->
+	  <a class="carousel-control-prev" href="#myCarousel" data-slide="prev">
+		<span class="carousel-control-prev-icon"></span>
+	  </a>
+	  <a class="carousel-control-next" href="#myCarousel" data-slide="next">
+		<span class="carousel-control-next-icon"></span>
+	  </a>
+	</div><br>	
+    <section>
+    <p><strong>ENQUEST ESTUDIOS</strong></p><hr>
+   	 <p>Enquest Estudios es una empresa formada por especialistas licenciados en Investigación y Técnicas de Mercado, Psicología y Administración de Empresas, con un equipo multidisciplinar preparado para acometer estudios de mercado para el sector público y privado. Una larga experiencia en estudios de investigación social confieren al equipo humano de Enquest Estudios la capacitación necesaria para llevar a cabo el trabajo con garantías.</p>
+    <p>Entender al cliente y dar respuesta a sus necesidades de información es una de las prioridades de nuestra empresa. Para ello es preciso establecer las siguientes pautas de trabajo:</p>	
+	
+   <div class="container-fluid">
+   	<div class="row menu">
+		<div class=" col-sm-8 ">                   
+	  <!-- arachin gicy -->	      
+        <ul>
+        	<li><strong>Briefing:</strong> es preciso disponer de toda la información base desde la que partimos. Si disponemos de un buen punto de partida con una definición del problema a investigar, las posibilidades de éxito serán mayores.</li>
+            <li><strong>Técnica de investigación:</strong> de acuerdo a la definición de la investigación y del presupuesto, aconsejaremos una técnica adecuada que permita obtener la información al menor coste posible.</li>
+            <li><strong>Trabajo de campo:</strong> ponemos en marcha los medios humanos y técnicos necesarios para la recogida de la información. Para ello contamos con encuestadores especializados y equipos técnicos adecuados para cada estudio concreto.</li>
+            <li><strong>Informe de resultados:</strong> analizamos la información obtenida en el trabajo de campo y elaboramos un informe con los resultados mediante tablas y una explicación de los resultados.</li>
+             </ul>
+            <p>Le invitamos a que se ponga en contacto con nosotros para cambiar impresiones y concertar una entrevista sin compromiso. Nuestro teléfono es <a href="966271692">96.627.16.92</a> o bien envíenos un email accediendo al menú<a href="#contacto"> Contacto.</a>
+Enquest, estudios de mercado, sondeos, Alicante
+</p>      
+             	
+        </div>      
+       	<div class=" col-sm-3 offsel-sm-1"> 
+			<div class="icono1"><img src="imagen/portada1.png"</i></div>
+	  	</div>
+        <div style="clear:both"></div> 
+      </div>	
+ </div>
+ </section>
+ <div class="container-fluid">
+ <section>
+ <p><strong>RECURSOS HUMANOS Y TÉCNICOS</strong></p><hr>
+   
+   	<div class="row ">
+		<div class=" col-sm-8 ">                   
+	  <!-- arachin gicy -->	
+       
+   	 <p>Recursos humanos y técnicos.<br>
+El equipo humano de Enquest Estudios está formado por profesionales con una dilatada experiencia en Estudios de Mercado y Sondeos de Opinión.<br>
+Somos un equipo de licenciados en Investigación y Técnicas de Mercado, Sociología, Administración de Empresas y Psicología, preparados para dar respuesta a sus proyectos.<br>
+La red de campo la forman encuestadores preparados en los estudios de mercado estando supervisados constantemente por los responsables de campo. Además disponemos de acuerdos con otras redes de campo en el caso de necesitarse por exceder nuestro ámbito geográfico.<br>
+Los recursos tecnológicos con los que cuenta Enquest Estudios están a la vanguardia técnica:<br>
+</p>	
+	
+        <ul>
+        	<li><strong>Plataforma para entrevistas on-line (CAWI).</strong>
+            <p><strong>Computer Assisted Web Interviewing o CAWI.</strong>Las encuestas son autoadministradas, es decir, el usuario es quien hace la encuesta usando la plataforma on-line. La tasa de respuestas es menor que la de otros sistemas de no ser por el uso de sistemas recordatorios o un incentivo. Es un sistema rápido y económico con el que se accede a la población con acceso a internet. Puede ser un complemento de las encuestas telefónicas en relación a la población más joven o de más difícil acceso.</p>
+            </li>
+            
+            <li><strong>Tablets con geolocalización para entrevistas personales (CAPI).</strong>
+            <p><strong>Computer Assisted Personal Interview o CAPI.</strong>Las encuestas se hacen en la zona geográfica establecida por el cliente, con la ayuda de un dispositivo móvil o una tablet. La geolocalización permite determinar el lugar y la hora donde se ha realizado la encuesta. La ventaja es que la tasa de rechazo es más baja que en otros sistemas, permite encuestas más largas y poder mostrar fotografías o artículos. Es más lento en el proceso que la encuesta telefónica y más costoso. El uso de la tablet permite grabar y transmitir el fichero de datos con mayor celeridad, acortando el proceso.</p>
+            </li>
+            <li><strong>Puestos de entrevistas telefónicas asistidas por ordenador (CATI).</strong>
+            
+             <p><strong>Computer Assisted Telephone Interviewing o CATI </strong>es un sistema por el cual se realizan las entrevistas por teléfono con la ayuda de un ordenador. El encuestador lee la máscara en la pantalla y va realizando las preguntas. El sistema establece automáticamente las llamadas y controla las cuotas. Es un sistema rápido y más económico que las encuestas personales. El inconveniente es que la población más joven no dispone de teléfono fijo y es más costoso contactar con ellos.</p>
+             </li>
+             </ul>                        	
+        </div>      
+       	<div class=" col-sm-3 offsel-sm-1"> 
+			<div class="icono1"><img src="imagen/recursos.jpg"></i></div>
+	  	</div>
+        <div style="clear:both"></div> 
+      </div>	
+ </div>  
+</section>
+<section1>
+<div class="container-fluid">
+<section1 id="contacto" >
+  
+<p><strong>CONTACTAR</strong></p><hr>
+  <p>En este formulario puede ponerse en contacto con nosotros para sus propuestas, dudas o sugerencias.<br> Muchas gracias</p>
+<div class="row" >
+    	<div class="col-12 col-sm-6 ">
+	<form name="formulario" action="http://10.10.2.1/recibir.php" method="post">	
+	<div >		
+			<div class="campo">
+				<label for="nombre">Nombre:</label><br/>			
+				<input type="text" name="nombre" placeholder=""/>
+			</div>
+            	
+			<div class="campo">
+				<label for="email">Email:</label><br/>			
+				<input type="email" name="email"/>
+			</div>		
+		
+			<div class="campo">
+				<label for="tlf">Comentarios:</label><br/>			
+				 <textarea name="message" cols="30" rows="8" class="caja" ></textarea>
+			</div>
+           
+				
+			<div class="campo">
+				<label for="imgppal">
+					Adjuntar archivo: 
+				</label><br/>			
+				<input type="file" id="imagen" name="imagen" onchange="ponerImagen();"/>
+			</div>
+             
+			</div>	
+				<div class="campo">
+				<p>
+				Imagen seleccionada:
+				</p>
+				<img id="imagen1" src=""/>
+			</div><br><br>
+			
+	<div style="clear:both"></div>
+    <div class="campo">					
+				<p><input type="checkbox" id="imagen" name="imagen" required onchange="ponerImagen();"/>&nbsp;<strong>Acepto recibir ofertas de Enquest Estudios,S.L.U.Así como comunicados por Mail</strong></p>
+                <p><input type="checkbox" id="imagen" name="imagen" required onchange="ponerImagen();"/>&nbsp;<strong>He leído y acepto las <a href="avisolegal.html">condiciones legales</a> establecidas por Enquest Estudios,S.L.U.</strong></p>
+			</div>
+             <div class="boton">
+				<input id="boton" type="button" value="Enviar" onclick="enviar();"/>
+				
+	</div><br>
+            <p>Le informamos que los datos personales obtenidos mediante este formulario, así como su dirección de correo electrónico, han sido incorporados en un fichero del cual es responsable Enquest Estudios S.L.U. con la finalidad de atender sus consultas y enviarle información relacionada con la entidad que pudiera ser de su interés.
+Enquest Estudios S.L.U se compromete a usar los datos recogidos mediante este formulario, únicamente para la finalidad anteriormente mencionada. El interesado declara tener conocimiento del destino y uso de los datos personales recogidos mediante la lectura de la presente cláusula. El envío de este e-mail implica la aceptación de las cláusulas expuestas. Si desea ejercer los derechos de acceso, rectificación, cancelación u oposición en los términos establecidos en la ley Orgánica 15/1999, puede hacerlo a la siguiente dirección César Elguezábal, 39-2º izquierda. 03001 (Alicante).</p>	
+						
+	</form>
+    </div>
+
+<div class="col-12 col-sm-4">
+<div id="menu1>"
+<p><strong>Direccion:</strong>&nbsp;&nbsp;<strong>/Cesar Elguezabel,39-2º,03001 Alicante</strong></p>
+<p><strong>Teléfono:</strong>&nbsp;&nbsp;<strong>96.627.16.92</strong></p>
+<p><strong>Localización:</strong></p><br><br><br>
+</div>
+
+<div id="map1">
+<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d6258.221813674908!2d-0.486984!3d38.346415!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd6237b2bcef48d3%3A0x37059c96ab7f4a10!2sCalle+Susana+Llaneras%2C+39%2C+03001+Alicante+(Alacant)%2C+Alicante!5e0!3m2!1ses!2ses!4v1560957628599!5m2!1ses!2ses" width="600" height="550" frameborder="0" style="border:0" allowfullscreen></iframe>
+</div>
+<div style="clear:both;"></div>
+<div id="resultado" class=""></div>
+</div>
+</div>
+ </div>
+  
+ </section1>
+ <footer>
+ <div class="container-fluid">
+	<div class="row ">
+		<div class=" col-sm-8">                   
+	  <!-- arachin gicy -->	  
+		<div style="float:left;">ENQUEST ESTUDIOS<hr>
+        <h6>C/César Elguezábal, 39-2º,03001 ALICANTE-Teléfono 96.627.16.92-<a href="avisolegal.html">Aviso legal</a></h6>
+        </div>    
+    	
+        </div>      
+       	<div class=" col-sm-4 logo"> 
+			<img src="imagen/logo.png" />
+	  	</div>
+        <div style="clear:both"></div> 
+      </div>	
+ </div> 
+  </footer>
+   
+  	
+</body>
+
+</html>
