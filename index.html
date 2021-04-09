@@ -8,6 +8,7 @@
 <meta name="keywords" content="el mundo de los dulces"/>  
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="style.css">
   
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
@@ -64,119 +65,15 @@ function enviar(){
 }
 </script>
 
- <style> 
  
-/* CSS Document */
-body{
-	background-image:url(imagen/fondo1.jpg);
-	background-repeat:repeat-x;
-	background-size:auto 100%;
-	background-color:#a1c1df;		
-	width:100%;
-	height:1200px;
-	font-family:Verdana, Geneva, sans-serif;	
-	margin:0 auto;		
-	box-sizing:border-box;
-}	
-#contenido1{
-	width:100%;
-	
-}
- 
-
-  /* Menú */
- nav{
-		background-color:#6699cc;
-		width:100%;		
-		font-size:1.2em;					
-		height:40px;
-		margin-top:10px;			
-		box-sizing:border-box;		
-		
-	}
-	nav a{
-		display:block;
-		color:#fff;
-		width:10%;;
-		margin-left:7%;
-		box-sizing:border-box;
-		text-decoration:none;
-		float:left;
-		text-align:center;
-		padding-top:12px;
-		
-		
-	}
-	nav a:hover{
-		display:block;
-		color:#ffee00;
-		transition:2s;
-	}
-  .icono {
-	margin-left:600px;
-	/* [disabled]box-sizing:border-box; */	
-  }
-	
-	
-	footer{
-		height:80px;
-		background-color:#fff;
-	}
-	.icon1{
-		width:100%;
-		padding-left:60%;
-	}
-	.logo{
-		width:225px;
-		padding-top:2px;				
-		box-sizing:border-box;
-	}
-	p,li{
-		font-size:0.8em;
-	}
-	
-	
-	.caja{
-	width:90%;			
-	box-sizing:border-box;
-}
-
-#caja{
-	width:40%;
-	height:100px;	
-	color:#333;
-	margin-left:115px;			
-	box-sizing:border-box;
-}
-#map1{
-	width:80%;
-	float:left;
-}
-form{
-	width:80%;
-	float:left;
-}
-#boton{
-	width:30%;
-	height:30px;
-	margin-top:0px;
-	position:relative;
-	float-left:5%;
-	}
-	.boton{
-		width:100%;
-		}
-
-	 </style>
  
 </head>
 <body onload="iniciar()">
 <div class="container-fluid">
-
 	<div class="row menu">
-		<div class=" col-sm-6 ">                   
-	  <!-- arachin gicy -->	  
-		<div style="float:left;"><img src="imagen/logo.png" /></div>    
+		<div class=" col-sm-6 ">       
+	  
+		<div style="float:left;"><img src="imag/logo.png" /></div>    
     	
         </div>      
        	<div class=" col-sm-6">
@@ -198,10 +95,10 @@ form{
 			<a class="nav-link" href="servicios.html">Servicios</a>
 		  </li>
 		  <li class="nav-item" >
-			<a class="nav-link" href="filosofiaexperiencia.html#filosofia">Filosofia</a>
+			<a class="nav-link" href="filosofiaexperiencia.html">Filosofia</a>
 		  </li> 	  
 		  <li class="nav-item" >
-			<a class="nav-link" href="filosofiaexperiencia.html#experiencia">Experiencia</a>
+			<a class="nav-link" href="experiencia.html">Experiencia</a>
 		  </li> 
           <li class="nav-item" >
 			<a class="nav-link" href="#contacto">Contaco</a>
@@ -216,7 +113,7 @@ form{
       </nav>
 <div class="container-fluid">
 	<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="5000" data-pause="false" >
-	  <!-- Indicators -->
+	  
 	  <ul class="carousel-indicators">
 		<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
 		<li data-target="#myCarousel" data-slide-to="1"></li>
@@ -224,26 +121,26 @@ form{
         <li data-target="#myCarousel" data-slide-to="3"></li>
 	  </ul>
 	  
-	  <!-- The slideshow -->
+	  
 	  <div class="carousel-inner">
 		<div class="carousel-item active">
 			<div id="contenido1">
-            <img src="imagen/baner1.jpg">				
+            <img src="imag/baner1.jpg">				
 			</div>
 		</div>
 		<div class="carousel-item">
 			<div id="contenido2">
-				<img src="imagen/baner2.jpg"/>	
+				<img src="imag/baner2.jpg"/>	
 			</div>
 		</div>
 		<div class="carousel-item">
 			<div id="contenido3">
-				<img src="imagen/baner3.jpg"/>	
+				<img src="imag/baner3.jpg"/>	
 			</div>
 		</div>	  
 	  <div class="carousel-item">
 			<div id="contenido4">
-				<img src="imagen/baner4.jpg"/>	
+				<img src="imag/baner4.jpg"/>	
 			</div>
 		</div>
 	  </div>
@@ -276,7 +173,7 @@ Enquest, estudios de mercado, sondeos, Alicante
              	
         </div>      
        	<div class=" col-sm-3 offsel-sm-1"> 
-			<div class="icono1"><img src="imagen/portada1.png"</i></div>
+			<div class="icono1"><img src="imag/portada1.png"/></div>
 	  	</div>
         <div style="clear:both"></div> 
       </div>	
@@ -288,15 +185,14 @@ Enquest, estudios de mercado, sondeos, Alicante
    
    	<div class="row ">
 		<div class=" col-sm-8 ">                   
-	  <!-- arachin gicy -->	
+	  
        
    	 <p>Recursos humanos y técnicos.<br>
 El equipo humano de Enquest Estudios está formado por profesionales con una dilatada experiencia en Estudios de Mercado y Sondeos de Opinión.<br>
 Somos un equipo de licenciados en Investigación y Técnicas de Mercado, Sociología, Administración de Empresas y Psicología, preparados para dar respuesta a sus proyectos.<br>
 La red de campo la forman encuestadores preparados en los estudios de mercado estando supervisados constantemente por los responsables de campo. Además disponemos de acuerdos con otras redes de campo en el caso de necesitarse por exceder nuestro ámbito geográfico.<br>
 Los recursos tecnológicos con los que cuenta Enquest Estudios están a la vanguardia técnica:<br>
-</p>	
-	
+</p>		
         <ul>
         	<li><strong>Plataforma para entrevistas on-line (CAWI).</strong>
             <p><strong>Computer Assisted Web Interviewing o CAWI.</strong>Las encuestas son autoadministradas, es decir, el usuario es quien hace la encuesta usando la plataforma on-line. La tasa de respuestas es menor que la de otros sistemas de no ser por el uso de sistemas recordatorios o un incentivo. Es un sistema rápido y económico con el que se accede a la población con acceso a internet. Puede ser un complemento de las encuestas telefónicas en relación a la población más joven o de más difícil acceso.</p>
@@ -305,14 +201,13 @@ Los recursos tecnológicos con los que cuenta Enquest Estudios están a la vangu
             <li><strong>Tablets con geolocalización para entrevistas personales (CAPI).</strong>
             <p><strong>Computer Assisted Personal Interview o CAPI.</strong>Las encuestas se hacen en la zona geográfica establecida por el cliente, con la ayuda de un dispositivo móvil o una tablet. La geolocalización permite determinar el lugar y la hora donde se ha realizado la encuesta. La ventaja es que la tasa de rechazo es más baja que en otros sistemas, permite encuestas más largas y poder mostrar fotografías o artículos. Es más lento en el proceso que la encuesta telefónica y más costoso. El uso de la tablet permite grabar y transmitir el fichero de datos con mayor celeridad, acortando el proceso.</p>
             </li>
-            <li><strong>Puestos de entrevistas telefónicas asistidas por ordenador (CATI).</strong>
-            
+            <li><strong>Puestos de entrevistas telefónicas asistidas por ordenador (CATI).</strong>            
              <p><strong>Computer Assisted Telephone Interviewing o CATI </strong>es un sistema por el cual se realizan las entrevistas por teléfono con la ayuda de un ordenador. El encuestador lee la máscara en la pantalla y va realizando las preguntas. El sistema establece automáticamente las llamadas y controla las cuotas. Es un sistema rápido y más económico que las encuestas personales. El inconveniente es que la población más joven no dispone de teléfono fijo y es más costoso contactar con ellos.</p>
              </li>
              </ul>                        	
         </div>      
        	<div class=" col-sm-3 offsel-sm-1"> 
-			<div class="icono1"><img src="imagen/recursos.jpg"></i></div>
+			<div class="icono1"><img src="imag/recursos.jpg"></i></div>
 	  	</div>
         <div style="clear:both"></div> 
       </div>	
@@ -341,8 +236,7 @@ Los recursos tecnológicos con los que cuenta Enquest Estudios están a la vangu
 			<div class="campo">
 				<label for="tlf">Comentarios:</label><br/>			
 				 <textarea name="message" cols="30" rows="8" class="caja" ></textarea>
-			</div>
-           
+			</div>      
 				
 			<div class="campo">
 				<label for="imgppal">
@@ -375,8 +269,8 @@ Enquest Estudios S.L.U se compromete a usar los datos recogidos mediante este fo
     </div>
 
 <div class="col-12 col-sm-4">
-<div id="menu1>"
-<p><strong>Direccion:</strong>&nbsp;&nbsp;<strong>/Cesar Elguezabel,39-2º,03001 Alicante</strong></p>
+<div id="menu1">
+ <p><strong>Direccion:</strong>&nbsp;&nbsp;<strong>/Cesar Elguezabel,39-2º,03001 Alicante</strong></p>
 <p><strong>Teléfono:</strong>&nbsp;&nbsp;<strong>96.627.16.92</strong></p>
 <p><strong>Localización:</strong></p><br><br><br>
 </div>
@@ -395,14 +289,14 @@ Enquest Estudios S.L.U se compromete a usar los datos recogidos mediante este fo
  <div class="container-fluid">
 	<div class="row ">
 		<div class=" col-sm-8">                   
-	  <!-- arachin gicy -->	  
+	  	  
 		<div style="float:left;">ENQUEST ESTUDIOS<hr>
         <h6>C/César Elguezábal, 39-2º,03001 ALICANTE-Teléfono 96.627.16.92-<a href="avisolegal.html">Aviso legal</a></h6>
         </div>    
     	
         </div>      
        	<div class=" col-sm-4 logo"> 
-			<img src="imagen/logo.png" />
+			<img src="imag/logo.png" />
 	  	</div>
         <div style="clear:both"></div> 
       </div>	
